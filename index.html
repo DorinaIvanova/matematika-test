@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🌟 Пазителите на Числата 🌟</title>
+    <title>🌟 Пазителите на Числата: Пълна Мисия 🌟</title>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap');
@@ -113,14 +113,6 @@
                 <span class="math-text">15 <div class="empty-box"></div> 15</span>
                 <div class="opts" data-id="s2"><button class="btn-opt" onclick="chkS(this, '=', 's2')">&lt;</button><button class="btn-opt" onclick="chkS(this, '=', 's2')">&gt;</button><button class="btn-opt" onclick="chkS(this, '=', 's2')">=</button></div>
             </div>
-            <div class="task-unit">
-                <span class="math-text">9 <div class="empty-box"></div> 10</span>
-                <div class="opts" data-id="s3"><button class="btn-opt" onclick="chkS(this, '<', 's3')">&lt;</button><button class="btn-opt" onclick="chkS(this, '<', 's3')">&gt;</button><button class="btn-opt" onclick="chkS(this, '<', 's3')">=</button></div>
-            </div>
-            <div class="task-unit">
-                <span class="math-text">13 <div class="empty-box"></div> 10</span>
-                <div class="opts" data-id="s4"><button class="btn-opt" onclick="chkS(this, '>', 's4')">&lt;</button><button class="btn-opt" onclick="chkS(this, '>', 's4')">&gt;</button><button class="btn-opt" onclick="chkS(this, '>', 's4')">=</button></div>
-            </div>
         </div>
     </div>
 
@@ -135,20 +127,12 @@
                 <span class="math-text">11 - 2 <div class="empty-box"></div> 9</span>
                 <div class="opts" data-id="d2"><button class="btn-opt" onclick="chkS(this, '=', 'd2')">&lt;</button><button class="btn-opt" onclick="chkS(this, '=', 'd2')">&gt;</button><button class="btn-opt" onclick="chkS(this, '=', 'd2')">=</button></div>
             </div>
-            <div class="task-unit">
-                <span class="math-text">11 + 3 <div class="empty-box"></div> 20</span>
-                <div class="opts" data-id="d3"><button class="btn-opt" onclick="chkS(this, '<', 'd3')">&lt;</button><button class="btn-opt" onclick="chkS(this, '<', 'd3')">&gt;</button><button class="btn-opt" onclick="chkS(this, '<', 'd3')">=</button></div>
-            </div>
-            <div class="task-unit">
-                <span class="math-text">4 + 6 <div class="empty-box"></div> 9</span>
-                <div class="opts" data-id="d4"><button class="btn-opt" onclick="chkS(this, '>', 'd4')">&lt;</button><button class="btn-opt" onclick="chkS(this, '>', 'd4')">&gt;</button><button class="btn-opt" onclick="chkS(this, '>', 'd4')">=</button></div>
-            </div>
         </div>
     </div>
 
     <div class="card card-5">
         <h2>Зад. 7: 🏰 Тайните на Геометричния замък</h2>
-        <img src="image.jpg" class="castle-img" onerror="this.src='image.jpg.jpg'; this.onerror=function(){this.src='https://r2.erweima.ai/i/1740495655573489112.jpg'};">
+        <img src="image.jpg" alt="Замък" class="castle-img">
         <div class="grid">
             <div class="task-unit">
                 <span class="math-text">Колко кръга?</span>
@@ -158,14 +142,17 @@
                 <span class="math-text">Колко триъгълника?</span>
                 <div class="opts" data-id="g2"><button class="btn-opt" onclick="chk(this, 3, 'g2')">2</button><button class="btn-opt" onclick="chk(this, 3, 'g2')">3</button><button class="btn-opt" onclick="chk(this, 3, 'g2')">4</button></div>
             </div>
-<div class="task-unit" style="grid-column: span 2;">
-    <span class="math-text">Колко правоъгълника?</span>
-    <div class="opts" data-id="g3">
-        <button class="btn-opt" onclick="chk(this, 4, 'g3')">4</button>
-        <button class="btn-opt" onclick="chk(this, 4, 'g3')">5</button>
-        <button class="btn-opt" onclick="chk(this, 4, 'g3')">6</button>
+            <div class="task-unit" style="grid-column: span 2;">
+                <span class="math-text">Колко правоъгълника?</span>
+                <div class="opts" data-id="g3">
+                    <button class="btn-opt" onclick="chk(this, 3, 'g3')">3</button>
+                    <button class="btn-opt" onclick="chk(this, 3, 'g3')">4</button>
+                    <button class="btn-opt" onclick="chk(this, 3, 'g3')">5</button>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+
     <button class="finish-button" onclick="finish()">ПРЕДАЙ МИСИЯТА! 🚀</button>
 </div>
 
