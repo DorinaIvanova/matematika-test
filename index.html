@@ -1,1 +1,387 @@
+<!DOCTYPE html>
 
+<html lang="bg">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>🌟 Пазителите на Числата: Пълна Мисия 🌟</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap');
+
+        
+
+        body { font-family: 'Comfortaa', cursive; background: #fff5f5; margin: 0; padding: 10px; color: #333; }
+
+        .main-container { max-width: 950px; background: white; margin: auto; padding: 30px; border-radius: 60px; border: 12px solid #ffcc00; box-shadow: 0 20px 0 #ff9900; }
+
+        
+
+        .title-box { text-align: center; background: linear-gradient(45deg, #ff0066, #ffcc00); color: white; padding: 35px; border-radius: 40px; margin-bottom: 30px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+
+        
+
+        .name-section { text-align: center; margin-bottom: 30px; background: #fffde7; padding: 25px; border-radius: 30px; border: 4px dashed #ff0066; }
+
+        .name-section input { padding: 15px; border-radius: 20px; border: 4px solid #ff0066; font-family: 'Comfortaa'; font-size: 1.5rem; width: 80%; text-align: center; outline: none; background: white; }
+
+
+
+        .card { padding: 25px; border-radius: 45px; margin-bottom: 35px; border: 8px solid; box-shadow: 0 12px 0 rgba(0,0,0,0.05); transition: 0.3s; }
+
+        .card:hover { transform: translateY(-5px); }
+
+
+
+        .card-1 { background: #e3f2fd; border-color: #2196f3; }
+
+        .card-2 { background: #fce4ec; border-color: #f06292; }
+
+        .card-3 { background: #f3e5f5; border-color: #9c27b0; }
+
+        .card-4 { background: #e0f7fa; border-color: #00bcd4; }
+
+        .card-5 { background: #e8f5e9; border-color: #4caf50; }
+
+        .card-6 { background: #fffde7; border-color: #fdd835; }
+
+
+
+        h2 { font-size: 2.2rem; text-align: center; margin-top: 0; color: #333; text-shadow: 1px 1px 0 white; }
+
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+        .task-unit { background: rgba(255,255,255,0.9); padding: 25px; border-radius: 35px; text-align: center; border: 3px solid #eee; }
+
+        .math-text { font-size: 2.2rem; display: block; margin-bottom: 15px; font-weight: bold; }
+
+        
+
+        .empty-box { display: inline-block; width: 55px; height: 55px; border: 4px solid #ff9900; border-radius: 15px; background: #fff; vertical-align: middle; margin: 0 10px; box-shadow: inset 0 4px 6px rgba(0,0,0,0.1); }
+
+
+
+        .opts { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+
+        .btn-opt { padding: 14px 22px; font-size: 1.5rem; border-radius: 20px; border: 4px solid #ced4da; background: white; cursor: pointer; font-family: 'Comfortaa'; transition: all 0.2s; min-width: 75px; box-shadow: 0 6px 0 #ddd; }
+
+        .btn-opt:hover { transform: translateY(-3px); box-shadow: 0 9px 0 #ccc; }
+
+        
+
+        .btn-correct { background: #4caf50 !important; color: white !important; border-color: #2e7d32 !important; box-shadow: 0 6px 0 #1b5e20 !important; }
+
+        .btn-wrong { background: #f44336 !important; color: white !important; border-color: #c62828 !important; box-shadow: 0 6px 0 #8e1b1b !important; }
+
+        .locked { pointer-events: none; opacity: 0.95; }
+
+
+
+        .castle-img { width: 100%; max-width: 420px; border-radius: 45px; border: 12px solid #4caf50; margin: 25px auto; display: block; box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
+
+
+
+        .finish-button { background: linear-gradient(#ff0066, #c2004d); color: white; border: none; padding: 40px; width: 100%; font-size: 3.2rem; border-radius: 70px; cursor: pointer; font-family: 'Comfortaa'; box-shadow: 0 15px 0 #8e0036; margin-top: 40px; transition: 0.2s; }
+
+        .finish-button:hover { transform: scale(1.03); filter: brightness(1.1); }
+
+        
+
+        #overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.92); flex-direction: column; align-items: center; justify-content: center; z-index: 9999; text-align: center; }
+
+        .success-card { background: white; padding: 60px; border-radius: 60px; border: 12px solid #ffcc00; max-width: 800px; box-shadow: 0 0 50px rgba(255,204,0,0.5); }
+
+    </style>
+
+</head>
+
+<body>
+
+
+
+<div class="main-container">
+
+    <div class="title-box"><h1>🌟 ПАЗИТЕЛИТЕ НА ЧИСЛАТА 🌟</h1></div>
+
+
+
+    <div class="name-section">
+
+        <input type="text" id="p_name" placeholder="👦 Напиши твоето име тук 👧">
+
+    </div>
+
+
+
+    <div class="card card-1">
+
+        <h2>Зад. 1: 🚀 Ракети към Слънцето</h2>
+
+        <div class="grid">
+
+            <div class="task-unit"><span class="math-text">12 + 4</span><div class="opts" data-id="q1"><button class="btn-opt" onclick="chk(this, 16, 'q1')">15</button><button class="btn-opt" onclick="chk(this, 16, 'q1')">16</button><button class="btn-opt" onclick="chk(this, 16, 'q1')">17</button></div></div>
+
+            <div class="task-unit"><span class="math-text">5 + 5</span><div class="opts" data-id="q2"><button class="btn-opt" onclick="chk(this, 10, 'q2')">9</button><button class="btn-opt" onclick="chk(this, 10, 'q2')">10</button><button class="btn-opt" onclick="chk(this, 10, 'q2')">11</button></div></div>
+
+            <div class="task-unit"><span class="math-text">12 + 5</span><div class="opts" data-id="q3"><button class="btn-opt" onclick="chk(this, 17, 'q3')">16</button><button class="btn-opt" onclick="chk(this, 17, 'q3')">17</button><button class="btn-opt" onclick="chk(this, 17, 'q3')">18</button></div></div>
+
+            <div class="task-unit"><span class="math-text">6 + 3</span><div class="opts" data-id="q4"><button class="btn-opt" onclick="chk(this, 9, 'q4')">8</button><button class="btn-opt" onclick="chk(this, 9, 'q4')">9</button><button class="btn-opt" onclick="chk(this, 9, 'q4')">10</button></div></div>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="card card-2">
+
+        <h2>Зад. 2: 🕵️ Магьосникът „Минус“</h2>
+
+        <div class="grid">
+
+            <div class="task-unit"><span class="math-text">10 - 8</span><div class="opts" data-id="q7"><button class="btn-opt" onclick="chk(this, 2, 'q7')">1</button><button class="btn-opt" onclick="chk(this, 2, 'q7')">2</button><button class="btn-opt" onclick="chk(this, 2, 'q7')">3</button></div></div>
+
+            <div class="task-unit"><span class="math-text">13 - 1</span><div class="opts" data-id="q8"><button class="btn-opt" onclick="chk(this, 12, 'q8')">11</button><button class="btn-opt" onclick="chk(this, 12, 'q8')">12</button><button class="btn-opt" onclick="chk(this, 12, 'q8')">14</button></div></div>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="card card-4">
+
+        <h2>Зад. 5: 🐊 Гладният крокодил</h2>
+
+        <div class="grid">
+
+            <div class="task-unit">
+
+                <span class="math-text">12 <div class="empty-box"></div> 18</span>
+
+                <div class="opts" data-id="s1"><button class="btn-opt" onclick="chkS(this, '<', 's1')">&lt;</button><button class="btn-opt" onclick="chkS(this, '<', 's1')">&gt;</button><button class="btn-opt" onclick="chkS(this, '<', 's1')">=</button></div>
+
+            </div>
+
+            <div class="task-unit">
+
+                <span class="math-text">15 <div class="empty-box"></div> 15</span>
+
+                <div class="opts" data-id="s2"><button class="btn-opt" onclick="chkS(this, '=', 's2')">&lt;</button><button class="btn-opt" onclick="chkS(this, '=', 's2')">&gt;</button><button class="btn-opt" onclick="chkS(this, '=', 's2')">=</button></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="card card-6">
+
+        <h2>Зад. 6: ⚔️ Математически двубой</h2>
+
+        <div class="grid">
+
+            <div class="task-unit">
+
+                <span class="math-text">12 + 5 <div class="empty-box"></div> 18</span>
+
+                <div class="opts" data-id="d1"><button class="btn-opt" onclick="chkS(this, '<', 'd1')">&lt;</button><button class="btn-opt" onclick="chkS(this, '<', 'd1')">&gt;</button><button class="btn-opt" onclick="chkS(this, '<', 'd1')">=</button></div>
+
+            </div>
+
+            <div class="task-unit">
+
+                <span class="math-text">4 + 6 <div class="empty-box"></div> 9</span>
+
+                <div class="opts" data-id="d2"><button class="btn-opt" onclick="chkS(this, '>', 'd2')">&lt;</button><button class="btn-opt" onclick="chkS(this, '>', 'd2')">&gt;</button><button class="btn-opt" onclick="chkS(this, '>', 'd2')">=</button></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="card card-5">
+
+        <h2>Зад. 7: 🏰 Тайните на Геометричния замък</h2>
+
+        <img src="image.jpg" class="castle-img" onerror="this.src='https://r2.erweima.ai/i/1740495655573489112.jpg';">
+
+        <div class="grid">
+
+            <div class="task-unit">
+
+                <span class="math-text">Колко кръга?</span>
+
+                <div class="opts" data-id="g1"><button class="btn-opt" onclick="chk(this, 4, 'g1')">3</button><button class="btn-opt" onclick="chk(this, 4, 'g1')">4</button><button class="btn-opt" onclick="chk(this, 4, 'g1')">5</button></div>
+
+            </div>
+
+            <div class="task-unit">
+
+                <span class="math-text">Колко триъгълника?</span>
+
+                <div class="opts" data-id="g2"><button class="btn-opt" onclick="chk(this, 3, 'g2')">2</button><button class="btn-opt" onclick="chk(this, 3, 'g2')">3</button><button class="btn-opt" onclick="chk(this, 3, 'g2')">4</button></div>
+
+            </div>
+
+            <div class="task-unit" style="grid-column: span 2;">
+
+                <span class="math-text">Колко правоъгълника?</span>
+
+                <div class="opts" data-id="g3"><button class="btn-opt" onclick="chk(this, 3, 'g3')">3</button><button class="btn-opt" onclick="chk(this, 3, 'g3')">4</button><button class="btn-opt" onclick="chk(this, 3, 'g3')">5</button></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <button class="finish-button" onclick="finish()">ПРЕДАЙ МИСИЯТА! 🚀</button>
+
+</div>
+
+
+
+<div id="overlay">
+
+    <div class="success-card">
+
+        <h1 style="font-size: 4.5rem; color: #ff0066; margin-bottom: 10px;">БРАВО! 🌟</h1>
+
+        <p id="res-text" style="font-size: 2.5rem; color: #333; margin-bottom: 40px;"></p>
+
+        <button onclick="location.reload()" style="padding: 25px 60px; border-radius: 40px; border: none; background: #4caf50; color: white; font-size: 2rem; cursor: pointer; font-family: 'Comfortaa'; box-shadow: 0 10px 0 #2e7d32; transition: 0.2s;">НОВА ИГРА</button>
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+    let scores = {};
+
+    let answeredGroups = {};
+
+
+
+    function chk(btn, ans, groupID) {
+
+        if (answeredGroups[groupID]) return;
+
+        answeredGroups[groupID] = true;
+
+        let parent = btn.parentElement;
+
+        parent.querySelectorAll('.btn-opt').forEach(b => {
+
+            b.classList.add('locked');
+
+            if (parseInt(b.innerText) === ans) b.classList.add('btn-correct');
+
+        });
+
+        if (parseInt(btn.innerText) === ans) { scores[groupID] = 1; } 
+
+        else { btn.classList.add('btn-wrong'); scores[groupID] = 0; }
+
+    }
+
+
+
+    function chkS(btn, ans, groupID) {
+
+        if (answeredGroups[groupID]) return;
+
+        answeredGroups[groupID] = true;
+
+        let parent = btn.parentElement;
+
+        parent.querySelectorAll('.btn-opt').forEach(b => {
+
+            b.classList.add('locked');
+
+            if (b.innerText === ans) b.classList.add('btn-correct');
+
+        });
+
+        if (btn.innerText === ans) { scores[groupID] = 1; } 
+
+        else { btn.classList.add('btn-wrong'); scores[groupID] = 0; }
+
+    }
+
+
+
+    function finish() {
+
+        let nameInput = document.getElementById('p_name').value;
+
+        let name = nameInput || "Малък герой";
+
+        let pts = Object.values(scores).reduce((a, b) => a + b, 0);
+
+        let total = Object.keys(answeredGroups).length;
+
+
+
+        if (total === 0) { alert("Първо реши задачите!"); return; }
+
+
+
+        document.getElementById('overlay').style.display = 'flex';
+
+        document.getElementById('res-text').innerText = name + ", ти събра " + pts + " точки! Страхотна работа!";
+
+        
+
+        // ИЗСТРЕЛВАНЕ НА КОНФЕТИ
+
+        var duration = 5 * 1000;
+
+        var animationEnd = Date.now() + duration;
+
+        var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 10000 };
+
+
+
+        function randomInRange(min, max) { return Math.random() * (max - min) + min; }
+
+
+
+        var interval = setInterval(function() {
+
+            var timeLeft = animationEnd - Date.now();
+
+            if (timeLeft <= 0) { return clearInterval(interval); }
+
+            var particleCount = 150 * (timeLeft / duration);
+
+            confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
+
+            confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
+
+        }, 250);
+
+    }
+
+</script>
+
+</body>
+
+</html> 
